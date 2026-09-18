@@ -32,7 +32,7 @@ def main():
     if b',' in header:
         df = pd.read_csv(file_name)
     else:
-        df = pd.read_excel(file_name)
+        df = pd.read_csv(file_name)
     print(f"Dataset Loaded Successfully! Shape: {df.shape}\n")
 
     # 2. Exploratory Data Analysis (EDA) summary
