@@ -24,7 +24,7 @@ def save_plot(fig, filename):
 
 def main():
     # 1. Load the dataset
-    file_name = 'liver_cancer_prediction (1).xls'
+    file_name = 'liver_cancer_prediction.csv.gz'    
     with open(file_name, 'rb') as f:
         header = f.read(200)
 
