@@ -24,7 +24,7 @@ st.markdown(
 )
 
 
-@st.cache_resource(show_spinner="Model train ho raha hai (pehli baar ~1 min lagta hai)...")
+@st.cache_resource(show_spinner="Training the model (the first run takes about a minute)...")
 def build_model():
     df = pd.read_csv(DATA_FILE)
     y = df["Prediction"].map({"No": 0, "Yes": 1})
@@ -74,8 +74,8 @@ st.caption(
 )
 if metrics["Accuracy"] - metrics["Baseline"] < 0.01:
     st.warning(
-        "Is dataset mein features aur target ke beech bahut kam signal hai, isliye model majority class "
-        "('No') ke baseline se behtar nahi hai. Predictions ko sirf demo ke liye samjho."
+        "This dataset has very little signal linking the features to the target, so the model does not "
+        "beat the majority-class ('No') baseline. Treat the predictions as a demo only."
     )
 st.markdown("---")
 
@@ -124,7 +124,7 @@ if go:
         st.subheader("Input Summary")
         st.dataframe(pd.DataFrame({"Value": [str(v) for v in values.values()]}, index=list(values.keys())))
 else:
-    st.info("👈 Sidebar mein details fill karo aur **Predict** button dabao.")
+    st.info("👈 Fill in the details in the sidebar and click **Predict**.")
 
 st.markdown("---")
 with st.expander("📊 Feature importance (Random Forest)"):
@@ -134,4 +134,4 @@ with st.expander("📊 Feature importance (Random Forest)"):
 with st.expander("📈 Dataset class distribution"):
     st.bar_chart(class_counts)
 
-st.caption("⚠️ Disclaimer: Educational/demo purpose only, medical advice ka substitute nahi.")
+st.caption("⚠️ Disclaimer: For educational/demo purposes only. Not a substitute for medical advice.")
